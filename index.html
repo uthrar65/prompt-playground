@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Playground</title>
+  <style>
+    body {
+      background: #17152b;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px 15px;
+    }
+
+    .card {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 25px;
+      background: #292544;
+      border-radius: 20px;
+    }
+
+    select, button {
+      padding: 12px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #c4a7ff;
+      cursor: pointer;
+    }
+
+    #result {
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+<body>
+  <h1> Prompt Playground</h1>
+  <p>Your imagination starts here!</p>
+
+  <div class="card">
+    <h2>Choose an idea</h2>
+
+    <select id="idea">
+      <option value="a magical forest with glowing butterflies">
+        Fantasy
+      </option>
+      <option value="a cute puppy in a flower garden">
+        Cute
+      </option>
+      <option value="a futuristic city with flying cars">
+        Sci-fi
+      </option>
+      <option value="a princess in a dreamy fairytale world">
+        Fairytale
+      </option>
+    </select>
+
+    <br>
+
+    <button onclick="generatePrompt()">
+      Generate my prompt 
+    </button>
+
+    <p id="result">Your prompt will appear here!</p>
+    <button onclick="copyPrompt()">Copy prompt 📋</button>
+  </div>
+
+  <script>
+    function generatePrompt() {
+      const idea = document.getElementById("idea").value;
+
+      const prompt = "Create a beautiful, highly detailed digital artwork of "
+        + idea
+        + ", cinematic lighting, magical atmosphere, rich colors, "
+        + "professional composition, 4K quality.";
+
+      document.getElementById("result").textContent = prompt;
+    }
+
+    function copyPrompt() {
+      const prompt = document.getElementById("result").textContent;
+
+      navigator.clipboard.writeText(prompt)
+        .then(() => alert("Prompt copied!"));
+    }
+  </script>
+</body>
+</html>
